@@ -1,0 +1,79 @@
+{
+  "name": "@goongmaps/goong-sdk",
+  "version": "1.0.0",
+  "description": "JS SDK for Goong REST API",
+  "main": "index.js",
+  "files": [
+    "umd",
+    "lib",
+    "services"
+  ],
+  "scripts": {
+    "format": "prettier --write '**/*.js'",
+    "lint-js": "eslint .",
+    "lint-md": "remark-preset-davidtheclark",
+    "lint": "run-p --aggregate-output lint-md lint-js",
+    "document-services": "documentation build 'services/*.js' --shallow --format md --config config/service-doc.yml > docs/services.md",
+    "bundle": "rollup --config ./rollup.config.js && uglifyjs umd/goong-sdk.js > umd/goong-sdk.min.js",
+    "prepublishOnly": "npm run bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goong-io/goong-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goong-op/goong-sdk/issues"
+  },
+  "keywords": [
+    "goong",
+    "goong-js",
+    "goong-api",
+    "directions",
+    "distance-matrix",
+    "autocomplete",
+    "geocoding"
+  ],
+  "author": "Goong",
+  "license": "ISC",
+  "browser": {
+    "./lib/client.js": "./lib/browser/browser-client.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "remark-preset-davidtheclark",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@mapbox/fusspot": "^0.4.0",
+    "eventemitter3": "^4.0.0",
+    "form-data": "^3.0.0",
+    "global": "^4.4.0",
+    "got": "^10.6.0",
+    "xtend": "^4.0.2"
+  },
+  "devDependencies": {
+    "documentation": "^12.1.4",
+    "eslint": "^5.1.0",
+    "eslint-plugin-node": "^6.0.1",
+    "lint-staged": "^10.0.8",
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.13.7",
+    "remark-preset-davidtheclark": "^0.8.1",
+    "rollup": "^0.62.0",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "uglify-js": "^3.4.4"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}

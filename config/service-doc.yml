@@ -1,0 +1,21 @@
+toc:  
+  - Static
+  - Geocoding
+  - Autocomplete
+  - Directions  
+  - DistanceMatrix  
+  # - name: Data structures
+  #   description: |
+  #     Data structures used in service method configuration.
+  #   children:
+  #     - DirectionsWaypoint
+  #     - MapMatchingPoint
+  #     - MatrixPoint
+  #     - OptimizationWaypoint
+  #     - SimpleMarkerOverlay
+  #     - CustomMarkerOverlay
+  #     - PathOverlay
+  #     - GeoJsonOverlay
+  #     - UploadableFile
+  #     - Coordinates
+  #     - BoundingBox
