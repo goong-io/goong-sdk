@@ -73,7 +73,6 @@ const goongDirections = require('@goongmaps/goong-sdk/services/directions');
 const baseClient = goongClient({ accessToken: MY_ACCESS_TOKEN });
 const directionService = goongDirections(baseClient);
 
-// Create a style.
 directionService.getDirections({..})
   .send()
   .then(response => {..}, error => {..});
