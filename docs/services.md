@@ -37,10 +37,6 @@ Learn more about this service and its responses in
 
 Get a static map image.
 
-**If you just want the URL for the static map image, create a request
-and get it's URL with `MapiRequest#url`.** This is what prior versions of the
-SDK returned.
-
 #### Parameters
 
 -   `config` **[Object][25]** 

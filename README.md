@@ -10,10 +10,6 @@ Works in Node, the browser, and React Native.
 - [Usage](#usage)
   - [Creating clients](#creating-clients)
   - [Creating and sending requests](#creating-and-sending-requests)
-- [Overview of requests, responses, and errors](#overview-of-requests-responses-and-errors)
-  - [GAPIRequest](#gapirequest)
-  - [GAPIResponse](#gapiresponse)
-  - [GAPIError](#gapierror)
 - [Services](#services)
 - [Pre-bundled files on unpkg.com](#pre-bundled-files-on-unpkgcom)
 

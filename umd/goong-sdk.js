@@ -350,6 +350,7 @@
     Object.keys(request.headers).forEach(function(key) {
       xhr.setRequestHeader(key, request.headers[key]);
     });
+    xhr.timeout = request.timeout;
     return xhr;
   }
 
@@ -888,6 +889,7 @@
    * @property {Object} params - A route parameters object, whose values will
    *   be interpolated the path.
    * @property {Object} headers - The request's headers.
+   * @property {number} timeout - The request's timeout.
    * @property {Object|string|null} body - Data to send with the request.
    *   If the request has a body, it will also be sent with the header
    *   `'Content-Type: application/json'`.
@@ -909,6 +911,7 @@
    * @param {Object} [options.params={}]
    * @param {string} [options.origin]
    * @param {Object} [options.headers]
+   * @param {Object} [options.timeout=500]
    * @param {Object} [options.body=null]
    * @param {Blob|ArrayBuffer|string|ReadStream} [options.file=null]
    * @param {string} [options.encoding=utf8]
@@ -956,6 +959,7 @@
     this.encoding = options.encoding || 'utf8';
     this.sendFileAs = options.sendFileAs || null;
     this.headers = headers;
+    this.timeout = options.timeout || 500;
   }
 
   /**
