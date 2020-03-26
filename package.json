@@ -1,6 +1,6 @@
 {
   "name": "@goongmaps/goong-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JS SDK for Goong REST API",
   "main": "index.js",
   "files": [
