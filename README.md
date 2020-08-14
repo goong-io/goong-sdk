@@ -1,4 +1,5 @@
 # @goongmaps/goong-sdk
+[![npm](https://img.shields.io/npm/v/@goongmaps/goong-sdk.svg)](https://www.npmjs.com/package/@goongmaps/goong-sdk)
 
 A JS SDK for working with [Goong REST APIs](https://docs.goong.io/).
 
