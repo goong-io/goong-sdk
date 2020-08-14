@@ -2,6 +2,12 @@
 
 A JS SDK for working with [Goong REST APIs](https://docs.goong.io/).
 
+ - [Directions API](https://docs.goong.io/rest/guide#direction)
+ - [Distance Matrix API](https://docs.goong.io/rest/guide#distance-matrix)
+ - [Geocoding API](https://docs.goong.io/rest/guide#geocode)
+ - [Place API](https://docs.goong.io/rest/guide#place)
+ - [Static Map API](https://docs.goong.io/rest/guide#static-map)
+ 
 Works in Node, the browser, and React Native.
 
 ## Table of contents
