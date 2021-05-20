@@ -57,7 +57,7 @@ Autocomplete.search = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/Place/AutoComplete',
+    path: '/place/autocomplete',
     query: config
   });
 };
@@ -89,7 +89,7 @@ Autocomplete.placeDetail = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/Place/Detail',
+    path: '/place/detail',
     query: config
   });
 };
