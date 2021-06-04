@@ -1,13 +1,13 @@
 # @goongmaps/goong-sdk
 [![npm](https://img.shields.io/npm/v/@goongmaps/goong-sdk.svg)](https://www.npmjs.com/package/@goongmaps/goong-sdk)
 
-A JS SDK for working with [Goong REST APIs](https://docs.goong.io/).
+A JS SDK for working with [Goong REST APIs](https://docs.goong.io/rest/).
 
- - [Directions API](https://docs.goong.io/rest/guide#direction)
- - [Distance Matrix API](https://docs.goong.io/rest/guide#distance-matrix)
- - [Geocoding API](https://docs.goong.io/rest/guide#geocode)
- - [Place API](https://docs.goong.io/rest/guide#place)
- - [Static Map API](https://docs.goong.io/rest/guide#static-map)
+ - [Directions API](https://docs.goong.io/rest/direction/)
+ - [Distance Matrix API](https://docs.goong.io/rest/distance_matrix/)
+ - [Geocoding API](https://docs.goong.io/rest/geocode/)
+ - [Place API](https://docs.goong.io/rest/place/)
+ - [Static Map API](https://docs.goong.io/rest/staticmap/)
  
 Works in Node, the browser, and React Native.
 
@@ -21,11 +21,14 @@ Works in Node, the browser, and React Native.
 - [Pre-bundled files on unpkg.com](#pre-bundled-files-on-unpkgcom)
 
 ## Installation
-
+### Npm
 ```
 npm install @goongmaps/goong-sdk
 ```
-
+### Yarn
+```
+yarn add @gongmaps/goong-sdk
+```
 **If you are supporting older browsers, you will need a Promise polyfill.**
 [es6-promise](https://github.com/stefanpenner/es6-promise) is a good one, if you're uncertain.
 
