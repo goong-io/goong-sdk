@@ -247,7 +247,7 @@ Get directions.
 
 -   `config` **[Object][31]** 
     -   `config.origin` **[number][32]** Origin coordinate `latitude,longitude`
-    -   `config.destination` **[string][33]** Destination coordinate `latitude,longitude`
+    -   `config.destination` **[string][33]** The destination coordinate string. Split by `;` for more than 2 destinations.
     -   `config.alternatives` **[boolean][41]** Whether to try to return alternative routes. (optional, default `true`)
     -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"` \| `"hd"`)** Vehicle type (optional, default `'car'`)
 

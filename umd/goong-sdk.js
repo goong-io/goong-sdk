@@ -1616,14 +1616,14 @@
    * Autocomplete API service.
    *
    * Learn more about this service and its responses in
-   * [Goong REST API documentation](https://docs.goong.io/rest/guide#place).
+   * [Goong Places API documentation](https://docs.goong.io/rest/place/).
    */
   var Autocomplete = {};
 
   /**
    * Autocomplete search
    *
-   * See the [public documentation](https://docs.goong.io/rest/guide#get-points-by-keyword).
+   * See the [public documentation](https://docs.goong.io/rest/place/#places-search-by-keyword-with-autocomplete).
    *
    * @param {Object} config
    * @param {string} config.input - A place name.
@@ -1674,7 +1674,7 @@
   /**
    * Autocomplete get place detail
    *
-   * See the [public documentation](https://docs.goong.io/rest/guide#get-point-detail-by-id).
+   * See the [public documentation](https://docs.goong.io/rest/place/#get-place-detail-by-id).
    *
    * @param {Object} config
    * @param {string} config.placeID - Place id from `Autocomplete` or `Geocoding`.
@@ -1698,7 +1698,7 @@
 
     return this.client.createRequest({
       method: 'GET',
-      path: '/place/detail',
+      path: '/Place/Detail',
       query: config
     });
   };
@@ -1732,7 +1732,7 @@
    * Directions API service.
    *
    * Learn more about this service and its responses in
-   * [Goong REST API documentation](https://docs.goong.io/rest/guide#direction).
+   * [Goong Directions API documentation](https://docs.goong.io/rest/directions).
    */
   var Directions = {};
 
@@ -1741,10 +1741,9 @@
    *
    * @param {Object} config
    * @param {number} config.origin - Origin coordinate `latitude,longitude`
-   * @param {string} config.destination - Destination coordinate `latitude,longitude` 
+   * @param {string} config.destination - The destination coordinate string. Split by `;` for more than 2 destinations.
    * @param {boolean} [config.alternatives=true] - Whether to try to return alternative routes.
-   * @param {'car'|'bike'|'taxi'} [config.vehicle='car'] - Vehicle type
-   * @param {'fastest'|'shortest'} [config.type='fastest'] - Routing type
+   * @param {'car'|'bike'|'taxi'|'hd'} [config.vehicle='car'] - Vehicle type
    
    * @return {GAPIRequest}
    *
@@ -1753,8 +1752,7 @@
    *   origin: '20.981971,105.864323',
    *   destination: '21.031011,105.783206',
    *   alternatives: true,
-   *   vehicle: 'car',
-   *   type: 'shortest'
+   *   vehicle: 'car'
    * })
    *   .send()
    *   .then(response => {
@@ -1783,12 +1781,12 @@
    * Geocoding API service.
    *
    * Learn more about this service and its responses in
-   * [Goong REST API documentation](https://docs.goong.io/rest/guide#geocode).
+   * [Goong Geocoding API documentation](https://docs.goong.io/rest/geocode).
    */
   var Geocoding = {};
 
   /**
-   * Get Place by coordinate
+   * Reverse Geocoding
    *
    * @param {Object} config
    * @param {string} config.latlng - Coordinates at which features will be reversed.
@@ -1796,11 +1794,11 @@
    *
    * @example
    * geocodingClient.reverseGeocode({
-   *   latlng: '20.981971,105.864323'
+   *   latlng: '21.0137443130001,105.798346108'
    * })
    *   .send()
    *   .then(response => {
-   *     // GeoJSON document with geocoding matches
+   *     // JSON document with geocoding matches
    *     const match = response.body;
    *   });
    */
@@ -1816,13 +1814,71 @@
     });
   };
 
+  /**
+   * Forward Geocoding
+   *
+   * @param {Object} config
+   * @param {string} config.address - Address string you are looking for
+   * @return {GAPIRequest}
+   *
+   * @example
+   * geocodingClient.forwardGeocode({
+   *   address: '91 Trung Kinh, Trung Hoa, Cau Giay, Ha Noi'
+   * })
+   *   .send()
+   *   .then(response => {
+   *     // JSON document with geocoding matches
+   *     const match = response.body;
+   *   });
+   */
+  Geocoding.forwardGeocode = function(config) {
+    validator.assertShape({
+      address: validator.required(validator.string)
+    })(config);
+
+    return this.client.createRequest({
+      method: 'GET',
+      path: '/Geocode',
+      query: config
+    });
+  };
+
+  /**
+   * Get Place detail
+   *
+   * @param {Object} config
+   * @param {string} config.place_id - Place ID string
+   * @return {GAPIRequest}
+   *
+   * @example
+   * geocodingClient.placeDetail({
+   *   place_id: 'uq58Yr/RA0wuHVtqzDczw7bbR4Gs7gs2b5DRZtogUr2bvWTaN5Vb2qd/atCZ1FoPg7cdIqFo9E_2TxQzrc20hw==.ZXhwYW5kMA=='
+   * })
+   *   .send()
+   *   .then(response => {
+   *     // JSON document with geocoding matches
+   *     const match = response.body;
+   *   });
+   */
+  Geocoding.placeDetail = function(config) {
+    validator.assertShape({
+      address: validator.required(validator.string)
+    })(config);
+
+    return this.client.createRequest({
+      method: 'GET',
+      path: '/Geocode',
+      query: config
+    });
+  };
+
   var geocoding = createServiceFactory_1(Geocoding);
 
   /**
    * Map Matching API service.
    *
    * Learn more about this service and its responses in
-   * [Goong REST API documentation](https://docs.goong.io/rest/guide#distance-matrix).
+   * [Goong Distance Matrix API documentation](https://docs.goong.io/rest/distance_matrix/).
    */
   var DistanceMatrix = {};
 
@@ -1832,16 +1888,14 @@
    * @param {Object} config
    * @param {number} config.origins - Origin coordinate: `latitude,longitude|latitude,longitude`
    * @param {string} config.destinations - List of destination coordinate: `latitude,longitude|latitude,longitude|latitude,longitude`
-   * @param {'car'|'bike'|'taxi'} [config.vehicle='car'] - Vehicle type
-   * @param {'fastest'|'shortest'} [config.type='fastest'] - Routing type
+   * @param {'car'|'bike'|'taxi'|'hd'} [config.vehicle='car'] - Vehicle type
    * @return {GAPIRequest}
    *
    * @example
    * matrixClient.getMatrix({
    *   origins: '20.981971,105.864323',
    *   destinations: '21.031011,105.783206|21.022328,105.790480|21.016665,105.788774',
-   *   vehicle: 'car',
-   *   type: 'fastest',
+   *   vehicle: 'car'
    * })
    *   .send()
    *   .then(response => {
@@ -1869,7 +1923,7 @@
    * Static Images API service.
    *
    * Learn more about this service and its responses in
-   * [Goong REST API documentation](https://docs.goong.io/rest/guide#static-map).
+   * [Goong Static Map API documentation](https://docs.goong.io/rest/staticmap/).
    */
   var Static = {};
 

@@ -57,7 +57,7 @@ Geocoding.reverseGeocode = function(config) {
  *     const match = response.body;
  *   });
  */
- Geocoding.forwardGeocode = function(config) {
+Geocoding.forwardGeocode = function(config) {
   v.assertShape({
     address: v.required(v.string)
   })(config);
@@ -68,7 +68,6 @@ Geocoding.reverseGeocode = function(config) {
     query: config
   });
 };
-
 
 /**
  * Get Place detail
@@ -87,7 +86,7 @@ Geocoding.reverseGeocode = function(config) {
  *     const match = response.body;
  *   });
  */
- Geocoding.placeDetail = function(config) {
+Geocoding.placeDetail = function(config) {
   v.assertShape({
     address: v.required(v.string)
   })(config);
