@@ -10,28 +10,34 @@
     -   [reverseGeocode][6]
         -   [Parameters][7]
         -   [Examples][8]
--   [Autocomplete][9]
-    -   [search][10]
-        -   [Parameters][11]
-        -   [Examples][12]
-    -   [placeDetail][13]
-        -   [Parameters][14]
-        -   [Examples][15]
--   [Directions][16]
-    -   [getDirections][17]
-        -   [Parameters][18]
-        -   [Examples][19]
--   [DistanceMatrix][20]
-    -   [getMatrix][21]
-        -   [Parameters][22]
-        -   [Examples][23]
+    -   [forwardGeocode][9]
+        -   [Parameters][10]
+        -   [Examples][11]
+    -   [placeDetail][12]
+        -   [Parameters][13]
+        -   [Examples][14]
+-   [Autocomplete][15]
+    -   [search][16]
+        -   [Parameters][17]
+        -   [Examples][18]
+    -   [placeDetail][19]
+        -   [Parameters][20]
+        -   [Examples][21]
+-   [Directions][22]
+    -   [getDirections][23]
+        -   [Parameters][24]
+        -   [Examples][25]
+-   [DistanceMatrix][26]
+    -   [getMatrix][27]
+        -   [Parameters][28]
+        -   [Examples][29]
 
 ## Static
 
 Static Images API service.
 
 Learn more about this service and its responses in
-[Goong REST API documentation][24].
+[Goong Static Map API documentation][30].
 
 ### getStaticImage
 
@@ -39,14 +45,14 @@ Get a static map image.
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.origin` **[number][26]** Origin coordinate `latitude,longitude`
-    -   `config.destination` **[string][27]** Destination coordinate `latitude,longitude`
-    -   `config.width` **[number][26]** Width of the image in pixels, default 600px. (optional, default `600`)
-    -   `config.height` **[number][26]** Height of the image in pixels, default 400px. (optional, default `400`)
+-   `config` **[Object][31]** 
+    -   `config.origin` **[number][32]** Origin coordinate `latitude,longitude`
+    -   `config.destination` **[string][33]** Destination coordinate `latitude,longitude`
+    -   `config.width` **[number][32]** Width of the image in pixels, default 600px. (optional, default `600`)
+    -   `config.height` **[number][32]** Height of the image in pixels, default 400px. (optional, default `400`)
     -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"`)** Vehicle type (optional, default `'car'`)
     -   `config.type` **(`"fastest"` \| `"shortest"`)** Routing type (optional, default `'fastest'`)
-    -   `config.color` **[string][27]** Color of route line, default #253494 (optional, default `'#253494'`)
+    -   `config.color` **[string][33]** Color of route line, default #253494 (optional, default `'#253494'`)
 
 #### Examples
 
@@ -74,26 +80,74 @@ Returns **GAPIRequest**
 Geocoding API service.
 
 Learn more about this service and its responses in
-[Goong REST API documentation][28].
+[Goong Geocoding API documentation][34].
 
 ### reverseGeocode
 
-Get Place by coordinate
+Reverse Geocoding
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.latlng` **[string][27]** Coordinates at which features will be reversed.
+-   `config` **[Object][31]** 
+    -   `config.latlng` **[string][33]** Coordinates at which features will be reversed.
 
 #### Examples
 
 ```javascript
 geocodingClient.reverseGeocode({
-  latlng: '20.981971,105.864323'
+  latlng: '21.0137443130001,105.798346108'
 })
   .send()
   .then(response => {
-    // GeoJSON document with geocoding matches
+    // JSON document with geocoding matches
+    const match = response.body;
+  });
+```
+
+Returns **GAPIRequest** 
+
+### forwardGeocode
+
+Forward Geocoding
+
+#### Parameters
+
+-   `config` **[Object][31]** 
+    -   `config.address` **[string][33]** Address string you are looking for
+
+#### Examples
+
+```javascript
+geocodingClient.forwardGeocode({
+  address: '91 Trung Kinh, Trung Hoa, Cau Giay, Ha Noi'
+})
+  .send()
+  .then(response => {
+    // JSON document with geocoding matches
+    const match = response.body;
+  });
+```
+
+Returns **GAPIRequest** 
+
+### placeDetail
+
+Get Place detail
+
+#### Parameters
+
+-   `config` **[Object][31]** 
+    -   `config.place_id` **[string][33]** Place ID string
+
+#### Examples
+
+```javascript
+geocodingClient.placeDetail({
+  place_id: 'uq58Yr/RA0wuHVtqzDczw7bbR4Gs7gs2b5DRZtogUr2bvWTaN5Vb2qd/atCZ1FoPg7cdIqFo9E_2TxQzrc20hw==.ZXhwYW5kMA=='
+})
+  .send()
+  .then(response => {
+    // JSON document with geocoding matches
     const match = response.body;
   });
 ```
@@ -105,23 +159,23 @@ Returns **GAPIRequest**
 Autocomplete API service.
 
 Learn more about this service and its responses in
-[Goong REST API documentation][29].
+[Goong Places API documentation][35].
 
 ### search
 
 Autocomplete search
 
-See the [public documentation][30].
+See the [public documentation][36].
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.input` **[string][27]** A place name.
-    -   `config.location` **[string][27]**  A location to use as a hint when looking up the specified address - `latitude,longitude`
-    -   `config.radius` **[number][26]**  Distance round from your location by kilometers
-    -   `config.limit` **[number][26]** Limit the number of results returned.
-         Options are [IETF language tags][31] comprised of a mandatory
-         [ISO 639-1 language code][32] and optionally one or more IETF subtags for country or script. (optional, default `10`)
+-   `config` **[Object][31]** 
+    -   `config.input` **[string][33]** A place name.
+    -   `config.location` **[string][33]**  A location to use as a hint when looking up the specified address - `latitude,longitude`
+    -   `config.radius` **[number][32]**  Distance round from your location by kilometers
+    -   `config.limit` **[number][32]** Limit the number of results returned.
+         Options are [IETF language tags][37] comprised of a mandatory
+         [ISO 639-1 language code][38] and optionally one or more IETF subtags for country or script. (optional, default `10`)
 
 #### Examples
 
@@ -155,14 +209,14 @@ Returns **GAPIRequest**
 
 Autocomplete get place detail
 
-See the [public documentation][33].
+See the [public documentation][39].
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.placeID` **[string][27]** Place id from `Autocomplete` or `Geocoding`.
-         Options are [IETF language tags][31] comprised of a mandatory
-         [ISO 639-1 language code][32] and optionally one or more IETF subtags for country or script.
+-   `config` **[Object][31]** 
+    -   `config.placeID` **[string][33]** Place id from `Autocomplete` or `Geocoding`.
+         Options are [IETF language tags][37] comprised of a mandatory
+         [ISO 639-1 language code][38] and optionally one or more IETF subtags for country or script.
 
 #### Examples
 
@@ -183,7 +237,7 @@ Returns **GAPIRequest**
 Directions API service.
 
 Learn more about this service and its responses in
-[Goong REST API documentation][34].
+[Goong Directions API documentation][40].
 
 ### getDirections
 
@@ -191,12 +245,11 @@ Get directions.
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.origin` **[number][26]** Origin coordinate `latitude,longitude`
-    -   `config.destination` **[string][27]** Destination coordinate `latitude,longitude`
-    -   `config.alternatives` **[boolean][35]** Whether to try to return alternative routes. (optional, default `true`)
-    -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"`)** Vehicle type (optional, default `'car'`)
-    -   `config.type` **(`"fastest"` \| `"shortest"`)** Routing type (optional, default `'fastest'`)
+-   `config` **[Object][31]** 
+    -   `config.origin` **[number][32]** Origin coordinate `latitude,longitude`
+    -   `config.destination` **[string][33]** Destination coordinate `latitude,longitude`
+    -   `config.alternatives` **[boolean][41]** Whether to try to return alternative routes. (optional, default `true`)
+    -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"` \| `"hd"`)** Vehicle type (optional, default `'car'`)
 
 #### Examples
 
@@ -205,8 +258,7 @@ directionsClient.getDirections({
   origin: '20.981971,105.864323',
   destination: '21.031011,105.783206',
   alternatives: true,
-  vehicle: 'car',
-  type: 'shortest'
+  vehicle: 'car'
 })
   .send()
   .then(response => {
@@ -221,7 +273,7 @@ Returns **GAPIRequest**
 Map Matching API service.
 
 Learn more about this service and its responses in
-[Goong REST API documentation][36].
+[Goong Distance Matrix API documentation][42].
 
 ### getMatrix
 
@@ -229,11 +281,10 @@ Get a duration and/or distance matrix showing travel times and distances between
 
 #### Parameters
 
--   `config` **[Object][25]** 
-    -   `config.origins` **[number][26]** Origin coordinate: `latitude,longitude|latitude,longitude`
-    -   `config.destinations` **[string][27]** List of destination coordinate: `latitude,longitude|latitude,longitude|latitude,longitude`
-    -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"`)** Vehicle type (optional, default `'car'`)
-    -   `config.type` **(`"fastest"` \| `"shortest"`)** Routing type (optional, default `'fastest'`)
+-   `config` **[Object][31]** 
+    -   `config.origins` **[number][32]** Origin coordinate: `latitude,longitude|latitude,longitude`
+    -   `config.destinations` **[string][33]** List of destination coordinate: `latitude,longitude|latitude,longitude|latitude,longitude`
+    -   `config.vehicle` **(`"car"` \| `"bike"` \| `"taxi"` \| `"hd"`)** Vehicle type (optional, default `'car'`)
 
 #### Examples
 
@@ -241,8 +292,7 @@ Get a duration and/or distance matrix showing travel times and distances between
 matrixClient.getMatrix({
   origins: '20.981971,105.864323',
   destinations: '21.031011,105.783206|21.022328,105.790480|21.016665,105.788774',
-  vehicle: 'car',
-  type: 'fastest',
+  vehicle: 'car'
 })
   .send()
   .then(response => {
@@ -268,58 +318,70 @@ Returns **GAPIRequest**
 
 [8]: #examples-1
 
-[9]: #autocomplete
+[9]: #forwardgeocode
 
-[10]: #search
+[10]: #parameters-2
 
-[11]: #parameters-2
+[11]: #examples-2
 
-[12]: #examples-2
+[12]: #placedetail
 
-[13]: #placedetail
+[13]: #parameters-3
 
-[14]: #parameters-3
+[14]: #examples-3
 
-[15]: #examples-3
+[15]: #autocomplete
 
-[16]: #directions
+[16]: #search
 
-[17]: #getdirections
+[17]: #parameters-4
 
-[18]: #parameters-4
+[18]: #examples-4
 
-[19]: #examples-4
+[19]: #placedetail-1
 
-[20]: #distancematrix
+[20]: #parameters-5
 
-[21]: #getmatrix
+[21]: #examples-5
 
-[22]: #parameters-5
+[22]: #directions
 
-[23]: #examples-5
+[23]: #getdirections
 
-[24]: https://docs.goong.io/rest/guide#static-map
+[24]: #parameters-6
 
-[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[25]: #examples-6
 
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[26]: #distancematrix
 
-[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[27]: #getmatrix
 
-[28]: https://docs.goong.io/rest/guide#geocode
+[28]: #parameters-7
 
-[29]: https://docs.goong.io/rest/guide#place
+[29]: #examples-7
 
-[30]: https://docs.goong.io/rest/guide#get-points-by-keyword
+[30]: https://docs.goong.io/rest/staticmap/
 
-[31]: https://en.wikipedia.org/wiki/IETF_language_tag
+[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[32]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[33]: https://docs.goong.io/rest/guide#get-point-detail-by-id
+[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[34]: https://docs.goong.io/rest/guide#direction
+[34]: https://docs.goong.io/rest/geocode
 
-[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[35]: https://docs.goong.io/rest/place/
 
-[36]: https://docs.goong.io/rest/guide#distance-matrix
+[36]: https://docs.goong.io/rest/place/#places-search-by-keyword-with-autocomplete
+
+[37]: https://en.wikipedia.org/wiki/IETF_language_tag
+
+[38]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+[39]: https://docs.goong.io/rest/place/#get-place-detail-by-id
+
+[40]: https://docs.goong.io/rest/directions
+
+[41]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[42]: https://docs.goong.io/rest/distance_matrix/

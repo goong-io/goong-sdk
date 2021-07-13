@@ -7,7 +7,7 @@ var createServiceFactory = require('./service-helpers/create-service-factory');
  * Map Matching API service.
  *
  * Learn more about this service and its responses in
- * [Goong REST API documentation](https://docs.goong.io/rest/guide#distance-matrix).
+ * [Goong Distance Matrix API documentation](https://docs.goong.io/rest/distance_matrix/).
  */
 var DistanceMatrix = {};
 
@@ -17,16 +17,14 @@ var DistanceMatrix = {};
  * @param {Object} config
  * @param {number} config.origins - Origin coordinate: `latitude,longitude|latitude,longitude`
  * @param {string} config.destinations - List of destination coordinate: `latitude,longitude|latitude,longitude|latitude,longitude`
- * @param {'car'|'bike'|'taxi'} [config.vehicle='car'] - Vehicle type
- * @param {'fastest'|'shortest'} [config.type='fastest'] - Routing type
+ * @param {'car'|'bike'|'taxi'|'hd'} [config.vehicle='car'] - Vehicle type
  * @return {GAPIRequest}
  *
  * @example
  * matrixClient.getMatrix({
  *   origins: '20.981971,105.864323',
  *   destinations: '21.031011,105.783206|21.022328,105.790480|21.016665,105.788774',
- *   vehicle: 'car',
- *   type: 'fastest',
+ *   vehicle: 'car'
  * })
  *   .send()
  *   .then(response => {

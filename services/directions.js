@@ -8,7 +8,7 @@ var createServiceFactory = require('./service-helpers/create-service-factory');
  * Directions API service.
  *
  * Learn more about this service and its responses in
- * [Goong REST API documentation](https://docs.goong.io/rest/guide#direction).
+ * [Goong Directions API documentation](https://docs.goong.io/rest/directions).
  */
 var Directions = {};
 
@@ -17,10 +17,9 @@ var Directions = {};
  *
  * @param {Object} config
  * @param {number} config.origin - Origin coordinate `latitude,longitude`
- * @param {string} config.destination - Destination coordinate `latitude,longitude` 
+ * @param {string} config.destination - The destination coordinate string. Split by `;` for more than 2 destinations.
  * @param {boolean} [config.alternatives=true] - Whether to try to return alternative routes.
- * @param {'car'|'bike'|'taxi'} [config.vehicle='car'] - Vehicle type
- * @param {'fastest'|'shortest'} [config.type='fastest'] - Routing type
+ * @param {'car'|'bike'|'taxi'|'hd'} [config.vehicle='car'] - Vehicle type
  
  * @return {GAPIRequest}
  *
@@ -29,8 +28,7 @@ var Directions = {};
  *   origin: '20.981971,105.864323',
  *   destination: '21.031011,105.783206',
  *   alternatives: true,
- *   vehicle: 'car',
- *   type: 'shortest'
+ *   vehicle: 'car'
  * })
  *   .send()
  *   .then(response => {

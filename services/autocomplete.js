@@ -7,14 +7,14 @@ var createServiceFactory = require('./service-helpers/create-service-factory');
  * Autocomplete API service.
  *
  * Learn more about this service and its responses in
- * [Goong REST API documentation](https://docs.goong.io/rest/guide#place).
+ * [Goong Places API documentation](https://docs.goong.io/rest/place/).
  */
 var Autocomplete = {};
 
 /**
  * Autocomplete search
  *
- * See the [public documentation](https://docs.goong.io/rest/guide#get-points-by-keyword).
+ * See the [public documentation](https://docs.goong.io/rest/place/#places-search-by-keyword-with-autocomplete).
  *
  * @param {Object} config
  * @param {string} config.input - A place name.
@@ -65,7 +65,7 @@ Autocomplete.search = function(config) {
 /**
  * Autocomplete get place detail
  *
- * See the [public documentation](https://docs.goong.io/rest/guide#get-point-detail-by-id).
+ * See the [public documentation](https://docs.goong.io/rest/place/#get-place-detail-by-id).
  *
  * @param {Object} config
  * @param {string} config.placeID - Place id from `Autocomplete` or `Geocoding`.
@@ -89,7 +89,7 @@ Autocomplete.placeDetail = function(config) {
 
   return this.client.createRequest({
     method: 'GET',
-    path: '/place/detail',
+    path: '/Place/Detail',
     query: config
   });
 };

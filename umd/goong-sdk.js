@@ -1666,7 +1666,7 @@
 
     return this.client.createRequest({
       method: 'GET',
-      path: '/Place/AutoComplete',
+      path: '/place/autocomplete',
       query: config
     });
   };
@@ -1698,7 +1698,7 @@
 
     return this.client.createRequest({
       method: 'GET',
-      path: '/Place/Detail',
+      path: '/place/detail',
       query: config
     });
   };

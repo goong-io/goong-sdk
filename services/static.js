@@ -6,7 +6,7 @@ var createServiceFactory = require('./service-helpers/create-service-factory');
  * Static Images API service.
  *
  * Learn more about this service and its responses in
- * [Goong REST API documentation](https://docs.goong.io/rest/guide#static-map).
+ * [Goong Static Map API documentation](https://docs.goong.io/rest/staticmap/).
  */
 var Static = {};
 

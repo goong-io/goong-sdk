@@ -1,19 +1,22 @@
 # @goongmaps/goong-sdk
+
 [![npm](https://img.shields.io/npm/v/@goongmaps/goong-sdk.svg)](https://www.npmjs.com/package/@goongmaps/goong-sdk)
 
-A JS SDK for working with [Goong REST APIs](https://docs.goong.io/rest/).
+A Javascript SDK for working with [Goong REST APIs](https://docs.goong.io/rest/).
 
- - [Directions API](https://docs.goong.io/rest/direction/)
- - [Distance Matrix API](https://docs.goong.io/rest/distance_matrix/)
- - [Geocoding API](https://docs.goong.io/rest/geocode/)
- - [Place API](https://docs.goong.io/rest/place/)
- - [Static Map API](https://docs.goong.io/rest/staticmap/)
- 
+- [Directions API](https://docs.goong.io/rest/directions/)
+- [Distance Matrix API](https://docs.goong.io/rest/distance_matrix/)
+- [Geocoding API](https://docs.goong.io/rest/geocode/)
+- [Place API](https://docs.goong.io/rest/place/)
+- [Static Map API](https://docs.goong.io/rest/staticmap/)
+
 Works in Node, the browser, and React Native.
 
 ## Table of contents
 
 - [Installation](#installation)
+  - [Npm](#npm)
+  - [Yarn](#yarn)
 - [Usage](#usage)
   - [Creating clients](#creating-clients)
   - [Creating and sending requests](#creating-and-sending-requests)
@@ -21,14 +24,19 @@ Works in Node, the browser, and React Native.
 - [Pre-bundled files on unpkg.com](#pre-bundled-files-on-unpkgcom)
 
 ## Installation
+
 ### Npm
+
 ```
 npm install @goongmaps/goong-sdk
 ```
+
 ### Yarn
+
 ```
 yarn add @gongmaps/goong-sdk
 ```
+
 **If you are supporting older browsers, you will need a Promise polyfill.**
 [es6-promise](https://github.com/stefanpenner/es6-promise) is a good one, if you're uncertain.
 
@@ -45,7 +53,7 @@ There are 3 basic steps to getting an API response:
 
 ### Creating clients
 
-To **create a service client**, import the service's factory function from `'@goongmaps/goong-sdk/services/{service}'` and provide it with your access token.
+To **create a service client**, import the service's factory function from `'@goongmaps/goong-sdk/services/{service}'` and provide it with your [access token](https://docs.goong.io/rest/api-key/).
 
 The service client exposes methods that create requests.
 
@@ -109,15 +117,3 @@ Here's how you might use it.
     .then(..);
 </script>
 ```
-
-[`got`]: https://github.com/sindresorhus/got
-
-[`http`]: https://nodejs.org/api/http.html
-
-[`xmlhttprequest`]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
-
-[`gapirequest`]: #gapirequest
-
-[`gapiresponse`]: #gapiresponse
-
-[`gapierror`]: #gapierror

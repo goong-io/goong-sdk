@@ -1,7 +1,7 @@
 {
   "name": "@goongmaps/goong-sdk",
-  "version": "1.0.4",
-  "description": "JS SDK for Goong REST API",
+  "version": "1.0.5",
+  "description": "A Javascript SDK working with Goong REST APIs",
   "main": "index.js",
   "files": [
     "umd",
@@ -27,11 +27,12 @@
   "keywords": [
     "goong",
     "goong-js",
-    "goong-api",
+    "goong-rest-api",
     "directions",
     "distance-matrix",
     "autocomplete",
-    "geocoding"
+    "geocoding",
+    "static-map"
   ],
   "author": "Goong",
   "license": "ISC",
