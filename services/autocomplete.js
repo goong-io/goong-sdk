@@ -2,6 +2,7 @@
 
 var v = require('./service-helpers/validator');
 var createServiceFactory = require('./service-helpers/create-service-factory');
+var stringifyBooleans = require('./service-helpers/stringify-booleans');
 
 /**
  * Autocomplete API service.
@@ -57,11 +58,11 @@ Autocomplete.search = function(config) {
     sessiontoken: v.string,
     more_compound: v.boolean
   })(config);
-
+  var query = stringifyBooleans(config);
   return this.client.createRequest({
     method: 'GET',
     path: '/place/autocomplete',
-    query: config
+    query: query
   });
 };
 
