@@ -35,7 +35,7 @@ DistanceMatrix.getMatrix = function(config) {
   v.assertShape({
     origins: v.required(v.string),
     destinations: v.required(v.string),
-    vehicle: v.oneOf('car', 'bike', 'taxi'),
+    vehicle: v.oneOf('car', 'bike', 'taxi', 'truct', 'hd'),
     type: v.oneOf('fastest', 'shortest')
   })(config);
 

@@ -47,7 +47,7 @@ Static.getStaticImage = function(config) {
     destination: v.required(v.string),
     width: v.number,
     height: v.number,
-    vehicle: v.oneOf('car', 'bike', 'taxi'),
+    vehicle: v.oneOf('car', 'bike', 'taxi', 'truct', 'hd'),
     type: v.oneOf('fastest', 'shortest'),
     color: v.string
   })(config);

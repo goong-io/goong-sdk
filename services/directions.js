@@ -39,7 +39,7 @@ Directions.getDirections = function(config) {
   v.assertShape({
     origin: v.required(v.string),
     destination: v.required(v.string),
-    vehicle: v.oneOf('car', 'bike', 'taxi'),
+    vehicle: v.oneOf('car', 'bike', 'taxi', 'truct', 'hd'),
     type: v.oneOf('fastest', 'shortest'),
     alternatives: v.boolean
   })(config);

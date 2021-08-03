@@ -52,7 +52,10 @@ Autocomplete.search = function(config) {
     input: v.required(v.string),
     location: v.string,
     radius: v.number,
-    limit: v.number
+    limit: v.number,
+    session_token: v.string,
+    sessiontoken: v.string,
+    more_compound: v.boolean
   })(config);
 
   return this.client.createRequest({
@@ -84,7 +87,8 @@ Autocomplete.search = function(config) {
  */
 Autocomplete.placeDetail = function(config) {
   v.assertShape({
-    placeid: v.required(v.string)
+    placeid: v.required(v.string),
+    place_id: v.string
   })(config);
 
   return this.client.createRequest({
