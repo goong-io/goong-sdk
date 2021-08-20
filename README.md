@@ -34,7 +34,7 @@ npm install @goongmaps/goong-sdk
 ### Yarn
 
 ```
-yarn add @gongmaps/goong-sdk
+yarn add @goongmaps/goong-sdk
 ```
 
 **If you are supporting older browsers, you will need a Promise polyfill.**
